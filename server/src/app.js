@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const authRoutes = require("./routes/authRoutes");
 const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require("./middlewares//requireAuth");
+const cors = require('cors');
 
 
 const mongoUri = `mongodb://maps:nguyentri1998@ds151082.mlab.com:51082/maps`;
@@ -19,6 +20,7 @@ mongoose.connect(mongoUri, {
     console.log("Connet DB success");
 })
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(trackRoutes);
